@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+html {
+  color-scheme: dark;
+}
+
+::selection {
+  background: theme(colors.lime);
+  color: theme(colors.ink);
+}
+
+:focus-visible {
+  outline: 2px solid theme(colors.lime);
+  outline-offset: 2px;
+}
