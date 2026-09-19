@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon";
 import type { ToolRow } from "@/content/blueprint";
 
 const costDot: Record<ToolRow["cost"], string> = {
@@ -36,7 +37,12 @@ export function ToolTable({ rows }: { rows: ToolRow[] }) {
         <tbody>
           {rows.map((row) => (
             <tr key={row.stage} className="border-b border-border">
-              <td className="py-4 pr-6 align-top text-[15px] leading-[1.65] text-text-2">{row.stage}</td>
+              <td className="py-4 pr-6 align-top">
+                <span className="flex items-center gap-3 text-[15px] leading-[1.65] text-text-2">
+                  <Icon name={row.icon} size={18} className="flex-shrink-0 text-text-3" />
+                  {row.stage}
+                </span>
+              </td>
               <td className="py-4 pr-6 align-top text-[15px] leading-[1.65] text-text-2">{row.tools}</td>
               <td className="py-4 pr-6 align-top">
                 <CostBadge cost={row.cost} />
@@ -50,7 +56,10 @@ export function ToolTable({ rows }: { rows: ToolRow[] }) {
         {rows.map((row) => (
           <div key={row.stage} className="rounded-card border border-border bg-surface p-5">
             <div className="flex items-start justify-between gap-3">
-              <p className="text-[15px] font-medium text-text">{row.stage}</p>
+              <span className="flex items-center gap-3 text-[15px] font-medium text-text">
+                <Icon name={row.icon} size={18} className="flex-shrink-0 text-text-3" />
+                {row.stage}
+              </span>
               <CostBadge cost={row.cost} />
             </div>
             <p className="mt-2 text-[14px] leading-[1.65] text-text-2">{row.tools}</p>

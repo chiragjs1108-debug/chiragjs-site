@@ -3,6 +3,7 @@ import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/Eyebrow";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
+import { Icon } from "@/components/Icon";
 import { IconBadge } from "@/components/IconBadge";
 import { GridTexture } from "@/components/GridTexture";
 import { Reveal } from "@/components/motion/Reveal";
@@ -141,7 +142,10 @@ export default function BlueprintPage() {
                 {blueprint.s04.phases.map((phase) => (
                   <Reveal key={phase.label}>
                     <Card hoverable={false}>
-                      <p className="font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">{phase.label}</p>
+                      <IconBadge icon={phase.icon} />
+                      <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
+                        {phase.label}
+                      </p>
                       <p className="mt-2 font-display text-[18px] font-semibold text-text">{phase.title}</p>
                       <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{phase.body}</p>
                     </Card>
@@ -229,6 +233,7 @@ export default function BlueprintPage() {
                   { key: "conversion", header: "What a conversion is" },
                 ]}
                 rows={[...blueprint.s07.scenarios]}
+                iconKey="icon"
               />
 
               <p className={proseClass}>{blueprint.s07.intro}</p>
@@ -275,7 +280,10 @@ export default function BlueprintPage() {
                 {blueprint.s10.cadence.map((item) => (
                   <Reveal key={item.label}>
                     <Card hoverable={false}>
-                      <p className="font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">{item.label}</p>
+                      <IconBadge icon={item.icon} />
+                      <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
+                        {item.label}
+                      </p>
                       <p className="mt-2 font-display text-[17px] font-semibold text-text">{item.title}</p>
                       <p className="mt-3 text-[14px] leading-[1.65] text-text-2">{item.body}</p>
                     </Card>
@@ -331,6 +339,7 @@ export default function BlueprintPage() {
                   { key: "providedBy", header: "Provided by" },
                 ]}
                 rows={[...blueprint.s13.resources]}
+                iconKey="icon"
               />
               <p className={closingClass}>{blueprint.s13.closing}</p>
             </BlueprintSection>
@@ -368,14 +377,16 @@ export default function BlueprintPage() {
                     href={whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+                    className="inline-flex items-center gap-2 font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
                   >
+                    <Icon name="MessageCircle" size={15} />
                     {blueprint.s15.whatsappLabel}
                   </a>
                   <a
                     href={`mailto:${site.email}`}
-                    className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+                    className="inline-flex items-center gap-2 font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
                   >
+                    <Icon name="Mail" size={15} />
                     {site.email}
                   </a>
                 </div>

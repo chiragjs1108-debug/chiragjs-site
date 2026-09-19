@@ -29,6 +29,7 @@ export type ComparisonTable = {
 };
 
 export type PhaseCard = {
+  icon: string;
   label: string;
   title: string;
   body: string;
@@ -50,6 +51,7 @@ export type MethodSubsection = {
 };
 
 export type ScopeScenario = {
+  icon: string;
   scenario: string;
   pageCount: string;
   intent: string;
@@ -57,6 +59,7 @@ export type ScopeScenario = {
 };
 
 export type ToolRow = {
+  icon: string;
   stage: string;
   tools: string;
   cost: "Free" | "Free tier" | "Paid" | "Paid API";
@@ -70,6 +73,7 @@ export type RoadmapRow = {
 };
 
 export type CadenceCard = {
+  icon: string;
   label: string;
   title: string;
   body: string;
@@ -81,6 +85,7 @@ export type RiskRow = {
 };
 
 export type ResourceRow = {
+  icon: string;
   role: string;
   responsibility: string;
   providedBy: string;
@@ -228,16 +233,19 @@ export const blueprint = {
       "If you are used to paid campaigns, the first three months of this will feel like nothing is happening. That is expected, not a shortfall, and it is worth agreeing on before we start rather than discovering at month three.",
     phases: [
       {
+        icon: "Rocket",
         label: "Months 1–3",
         title: "Build and index.",
         body: "Architecture, content and technical work go live. Organic enquiries near zero.",
       },
       {
+        icon: "TrendingUp",
         label: "Months 3–6",
         title: "Early rankings.",
         body: "Long-tail pages land. Enquiry trickle begins alongside your existing paid channels.",
       },
       {
+        icon: "LineChart",
         label: "Months 6–12+",
         title: "Compounding.",
         body: "Volume climbs, cost per enquiry falls, and the curve never resets to zero.",
@@ -326,18 +334,21 @@ export const blueprint = {
     formula: "Institutions per course in your region × courses to be ranked = core page count",
     scenarios: [
       {
+        icon: "GraduationCap",
         scenario: "College or group, 4 courses, 50 affiliated institutions",
         pageCount: "200–250",
         intent: "“top [course] colleges in [city]”",
         conversion: "Seat enquiry or counselling call",
       },
       {
+        icon: "BookOpen",
         scenario: "Coaching institute, 6 exam categories, 3 cities",
         pageCount: "120–200",
         intent: "“[exam] coaching in [area]”",
         conversion: "Demo class booking or callback",
       },
       {
+        icon: "Handshake",
         scenario: "Admissions consultancy, statewide",
         pageCount: "150–400",
         intent: "“[exam] counselling”, “cutoff [year]”",
@@ -359,16 +370,16 @@ export const blueprint = {
     intro:
       "Free tools handle verification and baseline research throughout. Paid tools appear only where manual work stops scaling — crawling past 500 URLs, clustering past a few hundred keywords, tracking rankings across tiers.",
     rows: [
-      { stage: "Keyword research", tools: "Keyword Planner, Search Console, Trends", cost: "Free" },
-      { stage: "Keyword clustering", tools: "Ahrefs or SEMrush", cost: "Paid" },
-      { stage: "Site structure", tools: "Sheets, Supabase", cost: "Free tier" },
-      { stage: "Crawling and audit", tools: "Screaming Frog, Sitebulb", cost: "Paid" },
-      { stage: "Technical validation", tools: "PageSpeed, Rich Results Test", cost: "Free" },
-      { stage: "Content scoring", tools: "Surfer or Clearscope", cost: "Paid" },
-      { stage: "Drafting", tools: "LLM from locked briefs", cost: "Paid API" },
-      { stage: "Lead capture", tools: "Forms, Tag Manager, Sheets", cost: "Free" },
-      { stage: "Measurement", tools: "GA4, Search Console, Looker Studio", cost: "Free" },
-      { stage: "Rank tracking", tools: "Ahrefs or SEMrush", cost: "Paid" },
+      { icon: "Search", stage: "Keyword research", tools: "Keyword Planner, Search Console, Trends", cost: "Free" },
+      { icon: "Layers", stage: "Keyword clustering", tools: "Ahrefs or SEMrush", cost: "Paid" },
+      { icon: "Database", stage: "Site structure", tools: "Sheets, Supabase", cost: "Free tier" },
+      { icon: "Bug", stage: "Crawling and audit", tools: "Screaming Frog, Sitebulb", cost: "Paid" },
+      { icon: "Gauge", stage: "Technical validation", tools: "PageSpeed, Rich Results Test", cost: "Free" },
+      { icon: "FileText", stage: "Content scoring", tools: "Surfer or Clearscope", cost: "Paid" },
+      { icon: "Sparkles", stage: "Drafting", tools: "LLM from locked briefs", cost: "Paid API" },
+      { icon: "FormInput", stage: "Lead capture", tools: "Forms, Tag Manager, Sheets", cost: "Free" },
+      { icon: "LineChart", stage: "Measurement", tools: "GA4, Search Console, Looker Studio", cost: "Free" },
+      { icon: "BarChart3", stage: "Rank tracking", tools: "Ahrefs or SEMrush", cost: "Paid" },
     ] as ToolRow[],
     note:
       "Drafting runs from locked briefs, and every fee, intake figure and cutoff still passes human verification against source. AI drafts. It never substitutes for the fact-check.",
@@ -397,21 +408,25 @@ export const blueprint = {
     heading: "What the retainer actually buys",
     cadence: [
       {
+        icon: "Calendar",
         label: "Weekly",
         title: "Sprint review",
         body: "60-minute sprint review with your developer and content leads. Blockers cleared, next briefs released, QA sign-off on delivered pages.",
       },
       {
+        icon: "CheckSquare",
         label: "Fortnightly",
         title: "Technical audit",
         body: "Technical audit against a 40-point checklist: indexation, Core Web Vitals, schema validity, broken links, orphan pages, duplicate metas.",
       },
       {
+        icon: "FileText",
         label: "Monthly",
         title: "Leadership report",
         body: "Written report to leadership: indexation coverage, ranking movement by keyword tier, enquiry volume, cost per enquiry trend.",
       },
       {
+        icon: "RefreshCw",
         label: "Quarterly",
         title: "Strategy reset",
         body: "Keyword gaps re-scanned, competitor movement reviewed, next quarter's page roadmap re-prioritised.",
@@ -474,11 +489,11 @@ export const blueprint = {
     yourSuccess:
       "Closed admissions. Converting an enquiry into a confirmed seat depends entirely on your counselling team's speed, pricing and follow-up persistence.",
     resources: [
-      { role: "Project head / architect", responsibility: "Strategy, blueprints, quality control", providedBy: "Chirag" },
-      { role: "Full-stack developer", responsibility: "CMS, coding, site speed", providedBy: "You or your agency" },
-      { role: "SEO content writers", responsibility: "Long-form writing, data entry", providedBy: "You or your agency" },
-      { role: "UI/UX designer", responsibility: "Conversion layouts, graphics", providedBy: "You or your agency" },
-      { role: "Admissions team", responsibility: "Enquiry follow-up and closing", providedBy: "You" },
+      { icon: "Compass", role: "Project head / architect", responsibility: "Strategy, blueprints, quality control", providedBy: "Chirag" },
+      { icon: "Code2", role: "Full-stack developer", responsibility: "CMS, coding, site speed", providedBy: "You or your agency" },
+      { icon: "PenTool", role: "SEO content writers", responsibility: "Long-form writing, data entry", providedBy: "You or your agency" },
+      { icon: "Palette", role: "UI/UX designer", responsibility: "Conversion layouts, graphics", providedBy: "You or your agency" },
+      { icon: "Phone", role: "Admissions team", responsibility: "Enquiry follow-up and closing", providedBy: "You" },
     ] as ResourceRow[],
     closing: "No developer or writers in place? Not a blocker — I can help you source and brief them.",
   },

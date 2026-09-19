@@ -290,14 +290,16 @@ export default function Home() {
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+                  className="inline-flex items-center gap-2 font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
                 >
+                  <Icon name="MessageCircle" size={15} />
                   {home.closingCta.whatsappLabel}
                 </a>
                 <a
                   href={`mailto:${site.email}`}
-                  className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+                  className="inline-flex items-center gap-2 font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
                 >
+                  <Icon name="Mail" size={15} />
                   {site.email}
                 </a>
               </div>

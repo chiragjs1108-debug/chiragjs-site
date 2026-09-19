@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { Icon } from "@/components/Icon";
 import { site } from "@/content/site";
 
 export function Footer() {
@@ -31,14 +32,16 @@ export function Footer() {
         <div className="flex flex-col gap-2 md:items-end">
           <a
             href={`mailto:${site.email}`}
-            className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+            className="inline-flex items-center gap-2 font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
           >
+            <Icon name="Mail" size={14} />
             {site.email}
           </a>
           <a
             href={`tel:+${site.phone.raw}`}
-            className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+            className="inline-flex items-center gap-2 font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
           >
+            <Icon name="Phone" size={14} />
             {site.phone.display}
           </a>
         </div>
