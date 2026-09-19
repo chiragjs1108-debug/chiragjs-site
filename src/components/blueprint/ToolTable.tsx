@@ -73,7 +73,7 @@ const toolMeta: Record<string, { icon: string; tone: Tone }> = {
 
 function CostBadge({ cost }: { cost: ToolRow["cost"] }) {
   return (
-    <span className={`inline-flex items-center gap-2 font-mono text-[12px] ${costText[cost]}`}>
+    <span className={`inline-flex items-center gap-2 font-mono text-[13px] ${costText[cost]}`}>
       <span className={`h-2 w-2 rounded-full ${costDot[cost]}`} aria-hidden="true" />
       {cost}
     </span>
@@ -88,10 +88,10 @@ function ToolChips({ tools }: { tools: string[] }) {
         return (
           <span
             key={tool}
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3 py-2 transition-colors duration-[180ms] hover:border-border-bright"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface-2 px-3.5 py-2.5 transition-colors duration-[180ms] hover:border-border-bright"
           >
             <Icon name={meta.icon} size={16} className={`flex-shrink-0 ${toneText[meta.tone]}`} />
-            <span className="font-mono text-[12px] font-medium text-text">{tool}</span>
+            <span className="font-mono text-[13px] font-medium text-text">{tool}</span>
           </span>
         );
       })}
@@ -105,7 +105,7 @@ export function ToolTable({ rows }: { rows: ToolRow[] }) {
   const active = hovered ?? pinned;
 
   return (
-    <div className="mt-8">
+    <div className="mt-10">
       <div className="mb-4 flex flex-wrap gap-3" role="group" aria-label="Filter tools by cost">
         {legend.map((item) => {
           const isActive = active === item.key;
@@ -119,7 +119,7 @@ export function ToolTable({ rows }: { rows: ToolRow[] }) {
               onMouseLeave={() => setHovered(null)}
               onFocus={() => setHovered(item.key)}
               onBlur={() => setHovered(null)}
-              className={`flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[12px] transition-colors duration-[180ms] ${
+              className={`flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[13px] transition-colors duration-[180ms] ${
                 isActive ? `${item.border} ${item.text}` : "border-border text-text-3"
               }`}
             >
@@ -156,16 +156,16 @@ export function ToolTable({ rows }: { rows: ToolRow[] }) {
                   isMatch ? "opacity-100" : "opacity-35"
                 }`}
               >
-                <td className="py-4 pr-6 align-top">
-                  <span className="flex items-center gap-3 text-[15px] leading-[1.65] text-text-2">
+                <td className="py-5 pr-6 align-top">
+                  <span className="flex items-center gap-3 text-[16px] leading-[1.65] text-text-2">
                     <Icon name={row.icon} size={18} className="flex-shrink-0 text-text-3" />
                     {row.stage}
                   </span>
                 </td>
-                <td className="py-4 pr-6 align-top">
+                <td className="py-5 pr-6 align-top">
                   <ToolChips tools={row.tools} />
                 </td>
-                <td className="py-4 pr-6 align-top">
+                <td className="py-5 pr-6 align-top">
                   <CostBadge cost={row.cost} />
                 </td>
               </tr>
@@ -174,18 +174,18 @@ export function ToolTable({ rows }: { rows: ToolRow[] }) {
         </tbody>
       </table>
 
-      <div className="flex flex-col gap-4 md:hidden">
+      <div className="flex flex-col gap-5 md:hidden">
         {rows.map((row) => {
           const isMatch = !active || costGroup[row.cost] === active;
           return (
             <div
               key={row.stage}
-              className={`rounded-card border border-l-4 border-border bg-surface p-5 transition-opacity duration-[220ms] ${
+              className={`rounded-card border border-l-4 border-border bg-surface p-6 transition-opacity duration-[220ms] ${
                 costBorderL[row.cost]
               } ${isMatch ? "opacity-100" : "opacity-35"}`}
             >
               <div className="flex items-start justify-between gap-3">
-                <span className="flex items-center gap-3 text-[15px] font-medium text-text">
+                <span className="flex items-center gap-3 text-[16px] font-medium text-text">
                   <Icon name={row.icon} size={18} className="flex-shrink-0 text-text-3" />
                   {row.stage}
                 </span>

@@ -30,14 +30,14 @@ export function DataTable({ columns, rows, iconKey, toneKey, className = "" }: D
   };
 
   return (
-    <div className={`mt-8 ${className}`.trim()}>
+    <div className={`mt-10 ${className}`.trim()}>
       <table className="hidden w-full border-collapse text-left md:table">
         <thead>
           <tr className="border-b border-border">
             {columns.map((col) => (
               <th
                 key={col.key}
-                className="py-3 pr-6 font-mono text-[13px] font-medium uppercase tracking-[0.02em] text-text-3"
+                className="py-4 pr-8 font-mono text-[13px] font-medium uppercase tracking-[0.03em] text-text-3"
               >
                 {col.header}
               </th>
@@ -48,10 +48,10 @@ export function DataTable({ columns, rows, iconKey, toneKey, className = "" }: D
           {rows.map((row, i) => (
             <tr key={i} className="border-b border-border">
               {columns.map((col, colIndex) => (
-                <td key={col.key} className="py-4 pr-6 align-top text-[15px] leading-[1.65] text-text-2">
+                <td key={col.key} className="py-5 pr-8 align-top text-[16px] leading-[1.65] text-text-2">
                   {colIndex === 0 && iconKey ? (
                     <span className="flex items-start gap-3">
-                      <Icon name={row[iconKey]} size={18} className={`mt-0.5 ${iconClass(row)}`} />
+                      <Icon name={row[iconKey]} size={19} className={`mt-0.5 ${iconClass(row)}`} />
                       {row[col.key]}
                     </span>
                   ) : (
@@ -64,14 +64,14 @@ export function DataTable({ columns, rows, iconKey, toneKey, className = "" }: D
         </tbody>
       </table>
 
-      <div className="flex flex-col gap-4 md:hidden">
+      <div className="flex flex-col gap-5 md:hidden">
         {rows.map((row, i) => (
-          <div key={i} className="rounded-card border border-border bg-surface p-5">
-            {iconKey && <Icon name={row[iconKey]} size={20} className={`mb-3 ${iconClass(row)}`} />}
+          <div key={i} className="rounded-card border border-border bg-surface p-6">
+            {iconKey && <Icon name={row[iconKey]} size={22} className={`mb-4 ${iconClass(row)}`} />}
             {columns.map((col) => (
-              <div key={col.key} className="mb-3 last:mb-0">
-                <p className="font-mono text-[11px] uppercase tracking-[0.02em] text-text-3">{col.header}</p>
-                <p className="mt-1 text-[15px] leading-[1.65] text-text-2">{row[col.key]}</p>
+              <div key={col.key} className="mb-4 last:mb-0">
+                <p className="font-mono text-[12px] uppercase tracking-[0.03em] text-text-3">{col.header}</p>
+                <p className="mt-1.5 text-[16px] leading-[1.65] text-text-2">{row[col.key]}</p>
               </div>
             ))}
           </div>

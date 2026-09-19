@@ -97,7 +97,7 @@ export default function BlueprintPage() {
                       <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
                         {column.header}
                       </p>
-                      <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{column.body}</p>
+                      <p className="mt-3 text-[16px] leading-[1.7] text-text-2">{column.body}</p>
                     </Card>
                   </Reveal>
                 ))}
@@ -118,13 +118,13 @@ export default function BlueprintPage() {
                         <div className="flex items-start justify-between gap-3">
                           <IconBadge icon={card.icon} tone={tone} />
                           <span
-                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
+                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[12px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
                           >
                             {card.label}
                           </span>
                         </div>
                         <p className="mt-6 font-display text-[18px] font-semibold text-text">{card.title}</p>
-                        <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{card.body}</p>
+                        <p className="mt-3 text-[16px] leading-[1.7] text-text-2">{card.body}</p>
                       </Card>
                     </Reveal>
                   );
@@ -161,13 +161,13 @@ export default function BlueprintPage() {
                         <div className="flex items-start justify-between gap-3">
                           <IconBadge icon={phase.icon} tone={tone} />
                           <span
-                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
+                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[12px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
                           >
                             {phase.label}
                           </span>
                         </div>
                         <p className="mt-6 font-display text-[18px] font-semibold text-text">{phase.title}</p>
-                        <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{phase.body}</p>
+                        <p className="mt-3 text-[16px] leading-[1.7] text-text-2">{phase.body}</p>
                       </Card>
                     </Reveal>
                   );
@@ -212,7 +212,7 @@ export default function BlueprintPage() {
                           <p className="font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
                             Brief anatomy
                           </p>
-                          <ul className="mt-4 flex flex-col gap-2">
+                          <ul className="mt-5 flex flex-col gap-3">
                             {[
                               "Target keyword",
                               "Secondary terms",
@@ -221,8 +221,8 @@ export default function BlueprintPage() {
                               "Internal links, exact anchors",
                               "Meta description",
                             ].map((item) => (
-                              <li key={item} className="flex items-center gap-2 text-[14px] text-text-2">
-                                <span className="h-1 w-1 rounded-full bg-text-3" aria-hidden="true" />
+                              <li key={item} className="flex items-center gap-2.5 text-[16px] text-text-2">
+                                <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-lime" aria-hidden="true" />
                                 {item}
                               </li>
                             ))}
@@ -232,7 +232,7 @@ export default function BlueprintPage() {
                       {sub.slug === "indexation" && <IndexationWaves />}
                       {sub.slug === "link-architecture" && <LinkFlow />}
                     </div>
-                    <p className="mt-6 max-w-2xl text-[15px] leading-[1.65] text-text-2">{sub.body}</p>
+                    <p className="mt-6 max-w-2xl text-[16px] leading-[1.7] text-text-2">{sub.body}</p>
                   </div>
                 ))}
               </div>
@@ -240,8 +240,8 @@ export default function BlueprintPage() {
 
             {/* 07 — Scope */}
             <BlueprintSection id="scope" number="07" eyebrow={blueprint.s07.eyebrow} heading={blueprint.s07.heading}>
-              <div className="mt-10 rounded-card border border-border bg-surface-2 p-6">
-                <p className="font-mono text-[14px] leading-[1.65] text-text md:text-[15px]">
+              <div className="mt-10 rounded-card border border-lime/30 bg-surface-2 p-7 md:p-8">
+                <p className="font-mono text-[16px] leading-[1.6] text-text md:text-[18px]">
                   {blueprint.s07.formula}
                 </p>
               </div>
@@ -266,7 +266,7 @@ export default function BlueprintPage() {
                 </p>
                 <ul className="mt-3 flex flex-col gap-3">
                   {blueprint.s07.verify.map((item) => (
-                    <li key={item} className="flex gap-3 text-[15px] leading-[1.65] text-text-2">
+                    <li key={item} className="flex gap-3 text-[16px] leading-[1.7] text-text-2">
                       <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-lime" aria-hidden="true" />
                       {item}
                     </li>
@@ -284,9 +284,9 @@ export default function BlueprintPage() {
                     Free where possible, paid where it scales
                   </p>
                 </div>
-                <p className="mt-4 max-w-2xl text-[15px] leading-[1.65] text-text-2">{blueprint.s08.intro}</p>
+                <p className="mt-4 max-w-2xl text-[16px] leading-[1.7] text-text-2">{blueprint.s08.intro}</p>
                 <ToolTable rows={[...blueprint.s08.rows]} />
-                <p className="mt-6 max-w-2xl text-[15px] leading-[1.65] text-text">{blueprint.s08.note}</p>
+                <p className="mt-6 max-w-2xl text-[16px] leading-[1.7] text-text">{blueprint.s08.note}</p>
               </div>
             </BlueprintSection>
 
@@ -307,13 +307,13 @@ export default function BlueprintPage() {
                         <div className="flex items-start justify-between gap-3">
                           <IconBadge icon={item.icon} tone={tone} />
                           <span
-                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
+                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[12px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
                           >
                             {item.label}
                           </span>
                         </div>
                         <p className="mt-6 font-display text-[17px] font-semibold text-text">{item.title}</p>
-                        <p className="mt-3 text-[14px] leading-[1.65] text-text-2">{item.body}</p>
+                        <p className="mt-3 text-[15px] leading-[1.7] text-text-2">{item.body}</p>
                       </Card>
                     </Reveal>
                   );
@@ -351,7 +351,7 @@ export default function BlueprintPage() {
                 ]}
                 rows={[...blueprint.s12.rows]}
               />
-              <p className="mt-8 max-w-2xl font-display text-[19px] font-semibold leading-[1.4] text-lime">
+              <p className="mt-8 max-w-2xl font-display text-[21px] font-semibold leading-[1.4] text-lime md:text-[24px]">
                 {blueprint.s12.closing}
               </p>
             </BlueprintSection>
@@ -381,7 +381,7 @@ export default function BlueprintPage() {
                 {blueprint.s14.whyScales.map((item) => (
                   <div key={item.title}>
                     <p className="font-display text-[16px] font-semibold text-text">{item.title}</p>
-                    <p className="mt-2 text-[14px] leading-[1.65] text-text-2">{item.body}</p>
+                    <p className="mt-2 text-[15px] leading-[1.7] text-text-2">{item.body}</p>
                   </div>
                 ))}
               </div>

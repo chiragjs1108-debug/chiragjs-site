@@ -23,7 +23,7 @@ export function BlueprintSection({
     <section id={id} className={`scroll-mt-24 py-[72px] md:py-[120px] ${className}`.trim()}>
       <Eyebrow number={number}>{eyebrow}</Eyebrow>
       <Reveal>
-        <h2 className="mt-4 max-w-2xl font-display text-[28px] font-semibold leading-[1.1] tracking-[-0.02em] text-text md:text-[38px]">
+        <h2 className="mt-4 max-w-2xl font-display text-[30px] font-semibold leading-[1.12] tracking-[-0.02em] text-text md:text-[42px]">
           {heading}
         </h2>
       </Reveal>

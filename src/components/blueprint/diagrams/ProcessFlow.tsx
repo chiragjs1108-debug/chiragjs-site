@@ -64,7 +64,7 @@ export function ProcessFlow({ stages }: { stages: MethodStage[] }) {
               onMouseLeave={() => setHovered(null)}
               onFocus={() => setHovered(key)}
               onBlur={() => setHovered(null)}
-              className={`flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[12px] transition-colors duration-[180ms] ${
+              className={`flex items-center gap-2 rounded-full border px-3.5 py-2 font-mono text-[13px] transition-colors duration-[180ms] ${
                 isActive ? `${tier.activeBorder} ${tier.activeText}` : "border-border text-text-3"
               }`}
             >
@@ -75,7 +75,7 @@ export function ProcessFlow({ stages }: { stages: MethodStage[] }) {
         })}
       </div>
 
-      <StaggerGroup className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+      <StaggerGroup className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {stages.map((stage) => {
           const isMatch = !active || stage.ownership === active;
           const tier = ownership[stage.ownership];
@@ -84,13 +84,13 @@ export function ProcessFlow({ stages }: { stages: MethodStage[] }) {
               <div
                 onMouseEnter={() => setHovered(stage.ownership)}
                 onMouseLeave={() => setHovered(null)}
-                className={`flex h-full flex-col gap-2 rounded-card border p-4 transition-all duration-[220ms] ${
+                className={`flex h-full flex-col gap-2.5 rounded-card border p-5 transition-all duration-[220ms] ${
                   active && isMatch ? tier.activeBorder : tier.card
                 } ${tier.text} ${isMatch ? "opacity-100" : "opacity-35"}`}
               >
-                <span className="font-mono text-[12px] text-text-3">{stage.number}</span>
-                <p className="font-display text-[14px] font-semibold leading-tight">{stage.stage}</p>
-                <p className="text-[12px] leading-[1.5] text-text-3">{stage.detail}</p>
+                <span className="font-mono text-[13px] text-text-3">{stage.number}</span>
+                <p className="font-display text-[16px] font-semibold leading-tight">{stage.stage}</p>
+                <p className="text-[13px] leading-[1.5] text-text-3">{stage.detail}</p>
               </div>
             </Reveal>
           );
