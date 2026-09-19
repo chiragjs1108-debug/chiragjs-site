@@ -17,6 +17,7 @@ export type ApproachStep = {
 };
 
 export type FitColumn = {
+  icon: string;
   header: string;
   body: string;
 };
@@ -99,14 +100,17 @@ export const home = {
     heading: "Built for institutions that sell high-consideration decisions.",
     columns: [
       {
+        icon: "GraduationCap",
         header: "Colleges & groups",
         body: "Multiple courses, affiliated institutions, management quota seats to fill each cycle.",
       },
       {
+        icon: "BookOpen",
         header: "Coaching institutes",
         body: "Multiple exam categories across cities, where parents compare for weeks before enrolling.",
       },
       {
+        icon: "Handshake",
         header: "Admissions consultancies",
         body: "Counselling operations competing for the same searches as every other consultant in the state.",
       },
@@ -118,6 +122,7 @@ export const home = {
   background: {
     eyebrow: "Background",
     heading: "Twelve years in admissions. Not a generalist agency.",
+    stat: { value: 12, suffix: "+", label: "Years in admissions" },
     body: [
       "I have spent over a decade inside medical and AYUSH admissions counselling in Karnataka — cutoffs, seat allotment, management quota, the questions parents actually ask at 11pm before a counselling round. I run my own admissions properties, Ayushpedia and cutoffs.info, which means the methods on this site are ones I use on my own traffic, not theory borrowed from another industry.",
       "When I design a page structure, I am designing around how admissions decisions actually get made. That is the part an agency cannot rent.",

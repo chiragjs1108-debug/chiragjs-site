@@ -8,6 +8,9 @@ import {
   Search,
   LayoutGrid,
   MessageSquare,
+  GraduationCap,
+  BookOpen,
+  Handshake,
   type LucideIcon,
 } from "lucide-react";
 
@@ -21,6 +24,9 @@ const icons = {
   Search,
   LayoutGrid,
   MessageSquare,
+  GraduationCap,
+  BookOpen,
+  Handshake,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

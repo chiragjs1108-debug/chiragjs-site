@@ -4,6 +4,7 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Icon } from "@/components/Icon";
+import { IconBadge } from "@/components/IconBadge";
 import { GridTexture } from "@/components/GridTexture";
 import { Reveal } from "@/components/motion/Reveal";
 import { StaggerGroup } from "@/components/motion/StaggerGroup";
@@ -71,7 +72,7 @@ export default function Home() {
             {home.problem.cards.map((card) => (
               <Reveal key={card.label}>
                 <Card hoverable={false}>
-                  <Icon name={card.icon} size={32} className="text-text-2" />
+                  <IconBadge icon={card.icon} />
                   <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
                     {card.label}
                   </p>
@@ -114,7 +115,8 @@ export default function Home() {
       )}
 
       {/* 4. What I actually do */}
-      <section className="py-[72px] md:py-[120px]">
+      <section className="relative overflow-hidden py-[72px] md:py-[120px]">
+        <GridTexture />
         <Container>
           <Eyebrow number="02">{home.approach.eyebrow}</Eyebrow>
           <Reveal>
@@ -130,19 +132,17 @@ export default function Home() {
             <svg
               viewBox="0 0 100 4"
               preserveAspectRatio="none"
-              className="pointer-events-none absolute inset-x-0 top-6 hidden h-1 w-full md:block"
+              className="pointer-events-none absolute inset-x-0 top-12 hidden h-1 w-full md:block"
               aria-hidden="true"
             >
               <DrawSVG d="M4 2 L96 2" strokeWidth={1} className="stroke-border-bright" />
             </svg>
 
-            <StaggerGroup className="relative grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+            <StaggerGroup className="relative grid gap-6 sm:grid-cols-2 md:grid-cols-4">
               {home.approach.steps.map((step, index) => (
                 <Reveal key={step.title}>
-                  <div className="flex flex-col items-start gap-3">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border-bright bg-surface">
-                      <Icon name={step.icon} size={20} className="text-text-2" />
-                    </span>
+                  <Card hoverable={false} className="flex h-full flex-col items-start gap-3">
+                    <IconBadge icon={step.icon} />
                     <p className="font-mono text-[13px] text-text-3">
                       {String(index + 1).padStart(2, "0")}
                     </p>
@@ -150,7 +150,7 @@ export default function Home() {
                       {step.title}
                     </p>
                     <p className="text-[15px] leading-[1.65] text-text-2">{step.body}</p>
-                  </div>
+                  </Card>
                 </Reveal>
               ))}
             </StaggerGroup>
@@ -176,7 +176,8 @@ export default function Home() {
             {home.fit.columns.map((column) => (
               <Reveal key={column.header}>
                 <Card hoverable={false}>
-                  <p className="font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
+                  <IconBadge icon={column.icon} />
+                  <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
                     {column.header}
                   </p>
                   <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{column.body}</p>
@@ -201,12 +202,25 @@ export default function Home() {
             <h2 className={h2Class}>{home.background.heading}</h2>
           </Reveal>
 
-          <div className="mt-6 max-w-2xl space-y-4">
-            {home.background.body.map((paragraph, index) => (
-              <Reveal key={index} delay={index * 0.06}>
-                <p className="text-[17px] leading-[1.65] text-text-2">{paragraph}</p>
-              </Reveal>
-            ))}
+          <div className="mt-8 flex flex-col gap-8 md:flex-row md:items-start md:gap-12">
+            <Reveal>
+              <div className="flex-shrink-0">
+                <p className="font-display text-[56px] font-bold tracking-[-0.03em] text-text">
+                  <CountUp value={home.background.stat.value} suffix={home.background.stat.suffix} />
+                </p>
+                <p className="mt-1 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
+                  {home.background.stat.label}
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="max-w-2xl space-y-4">
+              {home.background.body.map((paragraph, index) => (
+                <Reveal key={index} delay={index * 0.06}>
+                  <p className="text-[17px] leading-[1.65] text-text-2">{paragraph}</p>
+                </Reveal>
+              ))}
+            </div>
           </div>
 
           <Reveal>
