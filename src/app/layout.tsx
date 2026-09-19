@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { site } from "@/content/site";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -24,11 +25,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Chirag J S — Fractional SEO Architect for Education Admissions",
-    template: "%s — Chirag J S",
+    default: site.metadata.title,
+    template: `%s — ${site.name}`,
   },
-  description:
-    "Fractional Digital Project Head and SEO Architect building organic admissions engines for colleges, coaching centres, and admissions consultancies.",
+  description: site.metadata.description,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

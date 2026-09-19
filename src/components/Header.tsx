@@ -6,6 +6,8 @@ import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { site } from "@/content/site";
 
+const mobileCta = site.nav.find((item) => item.label === "Contact") ?? site.nav[site.nav.length - 1];
+
 export function Header() {
   const pathname = usePathname();
 
@@ -37,14 +39,9 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:block">
-          <Button href={site.headerCta.href} variant="ghost">
-            {site.headerCta.label}
-          </Button>
-        </div>
         <div className="md:hidden">
-          <Button href="/contact" variant="ghost">
-            Contact
+          <Button href={mobileCta.href} variant="ghost">
+            {mobileCta.label}
           </Button>
         </div>
       </Container>
