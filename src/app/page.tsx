@@ -40,7 +40,7 @@ export default function Home() {
           <h1 className="mt-4 max-w-3xl font-display text-[38px] font-bold leading-[1.1] tracking-[-0.03em] text-text md:text-[64px]">
             {site.headline}
           </h1>
-          <p className="mt-6 max-w-[38rem] text-[19px] leading-[1.65] text-text-2 md:text-[21px]">
+          <p className="mt-6 max-w-[38rem] text-[19px] leading-[1.7] text-text md:text-[21px]">
             {site.supportingLine}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
@@ -63,7 +63,7 @@ export default function Home() {
             <h2 className={h2Class}>{home.problem.heading}</h2>
           </Reveal>
           <Reveal delay={0.06}>
-            <p className="mt-4 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+            <p className="mt-4 max-w-2xl text-[16px] leading-[1.7] text-text-2">
               {home.problem.intro}
             </p>
           </Reveal>
@@ -123,7 +123,7 @@ export default function Home() {
             <h2 className={h2Class}>{home.approach.heading}</h2>
           </Reveal>
           <Reveal delay={0.06}>
-            <p className="mt-4 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+            <p className="mt-4 max-w-2xl text-[16px] leading-[1.7] text-text-2">
               {home.approach.intro}
             </p>
           </Reveal>
@@ -157,7 +157,7 @@ export default function Home() {
           </div>
 
           <Reveal>
-            <p className="mt-12 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+            <p className="mt-12 max-w-2xl text-[16px] leading-[1.7] text-text-2">
               {home.approach.closingLine}
             </p>
           </Reveal>
@@ -187,7 +187,7 @@ export default function Home() {
           </StaggerGroup>
 
           <Reveal>
-            <p className="mt-10 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+            <p className="mt-10 max-w-2xl text-[16px] leading-[1.7] text-text-2">
               {home.fit.footerLine}
             </p>
           </Reveal>

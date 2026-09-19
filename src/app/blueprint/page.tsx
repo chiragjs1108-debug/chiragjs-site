@@ -13,6 +13,7 @@ import { ProgressBar } from "@/components/blueprint/ProgressBar";
 import { TableOfContents } from "@/components/blueprint/TableOfContents";
 import { BlueprintSection } from "@/components/blueprint/BlueprintSection";
 import { DataTable } from "@/components/blueprint/DataTable";
+import { Timeline } from "@/components/blueprint/Timeline";
 import { ComparisonTable } from "@/components/blueprint/ComparisonTable";
 import { ToolTable } from "@/components/blueprint/ToolTable";
 import { PricingTiers } from "@/components/blueprint/PricingTiers";
@@ -33,8 +34,14 @@ export const metadata: Metadata = {
   description: blueprint.meta.description,
 };
 
-const proseClass = "mt-6 max-w-2xl text-[16px] leading-[1.65] text-text-2";
-const closingClass = "mt-6 max-w-2xl text-[16px] leading-[1.65] text-text";
+const proseClass = "mt-6 max-w-2xl text-[17px] leading-[1.7] text-text-2 md:text-[18px]";
+const closingClass = "mt-6 max-w-2xl text-[17px] leading-[1.7] text-text md:text-[18px]";
+
+const pillStyle: Record<"lime" | "azure" | "amber", string> = {
+  lime: "border-lime/30 bg-lime/10 text-lime",
+  azure: "border-azure/30 bg-azure/10 text-azure",
+  amber: "border-amber/30 bg-amber/10 text-amber",
+};
 
 export default function BlueprintPage() {
   const whatsappHref = `https://wa.me/${site.phone.raw}`;
@@ -64,9 +71,9 @@ export default function BlueprintPage() {
         <Container>
           <Eyebrow>{blueprint.header.eyebrow}</Eyebrow>
           <h1 className="mt-4 max-w-3xl font-display text-[34px] font-bold leading-[1.1] tracking-[-0.03em] text-text md:text-[56px]">
-            {blueprint.header.heading}
+            {blueprint.header.heading} <span className="text-lime">{blueprint.header.headingAccent}</span>
           </h1>
-          <p className="mt-6 max-w-[42rem] text-[18px] leading-[1.65] text-text-2 md:text-[20px]">
+          <p className="mt-6 max-w-[42rem] text-[19px] leading-[1.7] text-text md:text-[21px]">
             {blueprint.header.standfirst}
           </p>
           <p className="mt-4 font-mono text-[13px] text-text-3">
@@ -103,18 +110,25 @@ export default function BlueprintPage() {
             {/* 02 — The problem */}
             <BlueprintSection id="problem" number="02" eyebrow={blueprint.s02.eyebrow} heading={blueprint.s02.heading}>
               <StaggerGroup className="mt-10 grid gap-6 sm:grid-cols-3">
-                {blueprint.s02.cards.map((card) => (
-                  <Reveal key={card.label}>
-                    <Card hoverable={false}>
-                      <IconBadge icon={card.icon} />
-                      <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
-                        {card.label}
-                      </p>
-                      <p className="mt-2 font-display text-[18px] font-semibold text-text">{card.title}</p>
-                      <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{card.body}</p>
-                    </Card>
-                  </Reveal>
-                ))}
+                {blueprint.s02.cards.map((card, index) => {
+                  const tone = ["amber", "amber", "lime"][index % 3] as "lime" | "azure" | "amber";
+                  return (
+                    <Reveal key={card.label}>
+                      <Card hoverable={false}>
+                        <div className="flex items-start justify-between gap-3">
+                          <IconBadge icon={card.icon} tone={tone} />
+                          <span
+                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
+                          >
+                            {card.label}
+                          </span>
+                        </div>
+                        <p className="mt-6 font-display text-[18px] font-semibold text-text">{card.title}</p>
+                        <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{card.body}</p>
+                      </Card>
+                    </Reveal>
+                  );
+                })}
               </StaggerGroup>
               <p className={proseClass}>{blueprint.s02.intro}</p>
               <p className={proseClass}>{blueprint.s02.intro2}</p>
@@ -139,18 +153,25 @@ export default function BlueprintPage() {
               </div>
               <p className={proseClass}>{blueprint.s04.intro}</p>
               <StaggerGroup className="mt-8 grid gap-6 sm:grid-cols-3">
-                {blueprint.s04.phases.map((phase) => (
-                  <Reveal key={phase.label}>
-                    <Card hoverable={false}>
-                      <IconBadge icon={phase.icon} />
-                      <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
-                        {phase.label}
-                      </p>
-                      <p className="mt-2 font-display text-[18px] font-semibold text-text">{phase.title}</p>
-                      <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{phase.body}</p>
-                    </Card>
-                  </Reveal>
-                ))}
+                {blueprint.s04.phases.map((phase, index) => {
+                  const tone = (["lime", "azure", "amber"] as const)[index % 3];
+                  return (
+                    <Reveal key={phase.label}>
+                      <Card hoverable={false}>
+                        <div className="flex items-start justify-between gap-3">
+                          <IconBadge icon={phase.icon} tone={tone} />
+                          <span
+                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
+                          >
+                            {phase.label}
+                          </span>
+                        </div>
+                        <p className="mt-6 font-display text-[18px] font-semibold text-text">{phase.title}</p>
+                        <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{phase.body}</p>
+                      </Card>
+                    </Reveal>
+                  );
+                })}
               </StaggerGroup>
               <p className={closingClass}>{blueprint.s04.closing}</p>
             </BlueprintSection>
@@ -271,33 +292,32 @@ export default function BlueprintPage() {
 
             {/* 09 — Roadmap */}
             <BlueprintSection id="roadmap" number="09" eyebrow={blueprint.s09.eyebrow} heading={blueprint.s09.heading}>
-              <DataTable
-                columns={[
-                  { key: "weeks", header: "Weeks" },
-                  { key: "stage", header: "Stage" },
-                  { key: "ships", header: "What ships" },
-                  { key: "gate", header: "Gate to pass" },
-                ]}
-                rows={[...blueprint.s09.rows]}
-              />
+              <Timeline rows={[...blueprint.s09.rows]} />
               <p className={closingClass}>{blueprint.s09.closing}</p>
             </BlueprintSection>
 
             {/* 10 — Governance rhythm */}
             <BlueprintSection id="governance" number="10" eyebrow={blueprint.s10.eyebrow} heading={blueprint.s10.heading}>
               <StaggerGroup className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {blueprint.s10.cadence.map((item) => (
-                  <Reveal key={item.label}>
-                    <Card hoverable={false}>
-                      <IconBadge icon={item.icon} />
-                      <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
-                        {item.label}
-                      </p>
-                      <p className="mt-2 font-display text-[17px] font-semibold text-text">{item.title}</p>
-                      <p className="mt-3 text-[14px] leading-[1.65] text-text-2">{item.body}</p>
-                    </Card>
-                  </Reveal>
-                ))}
+                {blueprint.s10.cadence.map((item, index) => {
+                  const tone = (["lime", "azure", "amber"] as const)[index % 3];
+                  return (
+                    <Reveal key={item.label}>
+                      <Card hoverable={false}>
+                        <div className="flex items-start justify-between gap-3">
+                          <IconBadge icon={item.icon} tone={tone} />
+                          <span
+                            className={`inline-flex items-center rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.04em] ${pillStyle[tone]}`}
+                          >
+                            {item.label}
+                          </span>
+                        </div>
+                        <p className="mt-6 font-display text-[17px] font-semibold text-text">{item.title}</p>
+                        <p className="mt-3 text-[14px] leading-[1.65] text-text-2">{item.body}</p>
+                      </Card>
+                    </Reveal>
+                  );
+                })}
               </StaggerGroup>
             </BlueprintSection>
 

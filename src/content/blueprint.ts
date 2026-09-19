@@ -143,7 +143,9 @@ export const blueprint = {
 
   header: {
     eyebrow: "The blueprint",
-    heading: "Build an enquiry pipeline you actually own",
+    // Split so the differentiating clause can be set in the accent colour.
+    heading: "Build an enquiry pipeline",
+    headingAccent: "you actually own",
     standfirst:
       "The complete method I use to turn search demand into a compounding admission enquiry engine — architecture, timeline, tooling and cost. Roughly a 15-minute read.",
     // Set at ship time — see "Still needed before this page ships" in the source spec.
