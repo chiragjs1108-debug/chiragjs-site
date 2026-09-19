@@ -176,7 +176,7 @@ export default function Home() {
             {home.fit.columns.map((column) => (
               <Reveal key={column.header}>
                 <Card hoverable={false}>
-                  <IconBadge icon={column.icon} />
+                  <IconBadge icon={column.icon} tone={column.tone} />
                   <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
                     {column.header}
                   </p>

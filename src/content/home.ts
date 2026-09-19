@@ -18,6 +18,7 @@ export type ApproachStep = {
 
 export type FitColumn = {
   icon: string;
+  tone: "lime" | "azure" | "amber";
   header: string;
   body: string;
 };
@@ -101,16 +102,19 @@ export const home = {
     columns: [
       {
         icon: "GraduationCap",
+        tone: "lime",
         header: "Colleges & groups",
         body: "Multiple courses, affiliated institutions, management quota seats to fill each cycle.",
       },
       {
         icon: "BookOpen",
+        tone: "azure",
         header: "Coaching institutes",
         body: "Multiple exam categories across cities, where parents compare for weeks before enrolling.",
       },
       {
         icon: "Handshake",
+        tone: "amber",
         header: "Admissions consultancies",
         body: "Counselling operations competing for the same searches as every other consultant in the state.",
       },

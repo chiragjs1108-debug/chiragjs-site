@@ -29,6 +29,15 @@ import {
   Palette,
   Mail,
   Rocket,
+  Target,
+  Link2,
+  FileSpreadsheet,
+  Waves,
+  ClipboardCheck,
+  Bot,
+  Tags,
+  PieChart,
+  Wrench,
   type LucideIcon,
 } from "lucide-react";
 
@@ -63,6 +72,15 @@ const icons = {
   Palette,
   Mail,
   Rocket,
+  Target,
+  Link2,
+  FileSpreadsheet,
+  Waves,
+  ClipboardCheck,
+  Bot,
+  Tags,
+  PieChart,
+  Wrench,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

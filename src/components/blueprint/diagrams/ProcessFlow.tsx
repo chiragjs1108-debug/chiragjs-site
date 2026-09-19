@@ -7,23 +7,32 @@ import type { MethodStage } from "@/content/blueprint";
 
 type Ownership = MethodStage["ownership"];
 
-const ownership: Record<Ownership, { card: string; text: string; swatch: string; legend: string }> = {
+const ownership: Record<
+  Ownership,
+  { card: string; text: string; swatch: string; activeBorder: string; activeText: string; legend: string }
+> = {
   mine: {
     card: "border-border-bright bg-surface-2",
     text: "text-text",
-    swatch: "bg-text-2",
+    swatch: "bg-lime",
+    activeBorder: "border-lime",
+    activeText: "text-lime",
     legend: "Mine to design",
   },
   shared: {
     card: "border-border bg-surface",
     text: "text-text-2",
-    swatch: "bg-text-3",
+    swatch: "bg-azure",
+    activeBorder: "border-azure",
+    activeText: "text-azure",
     legend: "Mine to govern, yours to execute",
   },
   joint: {
     card: "border-dashed border-border bg-transparent",
     text: "text-text-3",
-    swatch: "border border-text-3",
+    swatch: "bg-amber",
+    activeBorder: "border-amber",
+    activeText: "text-amber",
     legend: "Joint",
   },
 };
@@ -44,6 +53,7 @@ export function ProcessFlow({ stages }: { stages: MethodStage[] }) {
       >
         {tiers.map((key) => {
           const isActive = active === key;
+          const tier = ownership[key];
           return (
             <button
               key={key}
@@ -55,11 +65,11 @@ export function ProcessFlow({ stages }: { stages: MethodStage[] }) {
               onFocus={() => setHovered(key)}
               onBlur={() => setHovered(null)}
               className={`flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[12px] transition-colors duration-[180ms] ${
-                isActive ? "border-lime text-lime" : "border-border text-text-3"
+                isActive ? `${tier.activeBorder} ${tier.activeText}` : "border-border text-text-3"
               }`}
             >
-              <span className={`h-3 w-3 flex-shrink-0 rounded-full ${ownership[key].swatch}`} aria-hidden="true" />
-              {ownership[key].legend}
+              <span className={`h-3 w-3 flex-shrink-0 rounded-full ${tier.swatch}`} aria-hidden="true" />
+              {tier.legend}
             </button>
           );
         })}
@@ -68,14 +78,15 @@ export function ProcessFlow({ stages }: { stages: MethodStage[] }) {
       <StaggerGroup className="grid grid-cols-2 gap-3 sm:grid-cols-5">
         {stages.map((stage) => {
           const isMatch = !active || stage.ownership === active;
+          const tier = ownership[stage.ownership];
           return (
             <Reveal key={stage.number}>
               <div
                 onMouseEnter={() => setHovered(stage.ownership)}
                 onMouseLeave={() => setHovered(null)}
-                className={`flex h-full flex-col gap-2 rounded-card border p-4 transition-opacity duration-[220ms] ${
-                  ownership[stage.ownership].card
-                } ${ownership[stage.ownership].text} ${isMatch ? "opacity-100" : "opacity-35"}`}
+                className={`flex h-full flex-col gap-2 rounded-card border p-4 transition-all duration-[220ms] ${
+                  active && isMatch ? tier.activeBorder : tier.card
+                } ${tier.text} ${isMatch ? "opacity-100" : "opacity-35"}`}
               >
                 <span className="font-mono text-[12px] text-text-3">{stage.number}</span>
                 <p className="font-display text-[14px] font-semibold leading-tight">{stage.stage}</p>

@@ -86,7 +86,7 @@ export default function BlueprintPage() {
                 {blueprint.s01.columns.map((column) => (
                   <Reveal key={column.header}>
                     <Card hoverable={false}>
-                      <IconBadge icon={column.icon} />
+                      <IconBadge icon={column.icon} tone={column.tone} />
                       <p className="mt-6 font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
                         {column.header}
                       </p>
@@ -234,6 +234,7 @@ export default function BlueprintPage() {
                 ]}
                 rows={[...blueprint.s07.scenarios]}
                 iconKey="icon"
+                toneKey="tone"
               />
 
               <p className={proseClass}>{blueprint.s07.intro}</p>
@@ -255,9 +256,17 @@ export default function BlueprintPage() {
 
             {/* 08 — Tooling */}
             <BlueprintSection id="tooling" number="08" eyebrow={blueprint.s08.eyebrow} heading={blueprint.s08.heading}>
-              <p className={proseClass}>{blueprint.s08.intro}</p>
-              <ToolTable rows={[...blueprint.s08.rows]} />
-              <p className={closingClass}>{blueprint.s08.note}</p>
+              <div className="mt-10 rounded-card border border-border bg-surface p-6 md:p-8">
+                <div className="flex items-center gap-3">
+                  <IconBadge icon="Wrench" tone="azure" badgeSize="h-10 w-10" size={18} />
+                  <p className="font-mono text-[13px] font-semibold uppercase tracking-[0.08em] text-azure">
+                    Free where possible, paid where it scales
+                  </p>
+                </div>
+                <p className="mt-4 max-w-2xl text-[15px] leading-[1.65] text-text-2">{blueprint.s08.intro}</p>
+                <ToolTable rows={[...blueprint.s08.rows]} />
+                <p className="mt-6 max-w-2xl text-[15px] leading-[1.65] text-text">{blueprint.s08.note}</p>
+              </div>
             </BlueprintSection>
 
             {/* 09 — Roadmap */}

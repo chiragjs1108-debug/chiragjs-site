@@ -5,15 +5,30 @@ type Column = {
   header: string;
 };
 
+type Tone = "lime" | "azure" | "amber";
+
+const toneText: Record<Tone, string> = {
+  lime: "text-lime",
+  azure: "text-azure",
+  amber: "text-amber",
+};
+
 type DataTableProps = {
   columns: Column[];
   rows: Record<string, string>[];
   /** Row key holding a lucide icon name, shown beside the first column. */
   iconKey?: string;
+  /** Row key holding a tone ("lime" | "azure" | "amber") to colour that icon. */
+  toneKey?: string;
   className?: string;
 };
 
-export function DataTable({ columns, rows, iconKey, className = "" }: DataTableProps) {
+export function DataTable({ columns, rows, iconKey, toneKey, className = "" }: DataTableProps) {
+  const iconClass = (row: Record<string, string>) => {
+    const tone = toneKey ? (row[toneKey] as Tone) : undefined;
+    return `flex-shrink-0 ${tone ? toneText[tone] : "text-text-3"}`;
+  };
+
   return (
     <div className={`mt-8 ${className}`.trim()}>
       <table className="hidden w-full border-collapse text-left md:table">
@@ -36,7 +51,7 @@ export function DataTable({ columns, rows, iconKey, className = "" }: DataTableP
                 <td key={col.key} className="py-4 pr-6 align-top text-[15px] leading-[1.65] text-text-2">
                   {colIndex === 0 && iconKey ? (
                     <span className="flex items-start gap-3">
-                      <Icon name={row[iconKey]} size={18} className="mt-0.5 flex-shrink-0 text-text-3" />
+                      <Icon name={row[iconKey]} size={18} className={`mt-0.5 ${iconClass(row)}`} />
                       {row[col.key]}
                     </span>
                   ) : (
@@ -52,7 +67,7 @@ export function DataTable({ columns, rows, iconKey, className = "" }: DataTableP
       <div className="flex flex-col gap-4 md:hidden">
         {rows.map((row, i) => (
           <div key={i} className="rounded-card border border-border bg-surface p-5">
-            {iconKey && <Icon name={row[iconKey]} size={20} className="mb-3 text-text-3" />}
+            {iconKey && <Icon name={row[iconKey]} size={20} className={`mb-3 ${iconClass(row)}`} />}
             {columns.map((col) => (
               <div key={col.key} className="mb-3 last:mb-0">
                 <p className="font-mono text-[11px] uppercase tracking-[0.02em] text-text-3">{col.header}</p>

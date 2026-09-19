@@ -5,6 +5,7 @@ export type Cta = {
 
 export type IconColumn = {
   icon: string;
+  tone: "lime" | "azure" | "amber";
   header: string;
   body: string;
 };
@@ -52,6 +53,7 @@ export type MethodSubsection = {
 
 export type ScopeScenario = {
   icon: string;
+  tone: "lime" | "azure" | "amber";
   scenario: string;
   pageCount: string;
   intent: string;
@@ -61,7 +63,7 @@ export type ScopeScenario = {
 export type ToolRow = {
   icon: string;
   stage: string;
-  tools: string;
+  tools: string[];
   cost: "Free" | "Free tier" | "Paid" | "Paid API";
 };
 
@@ -158,16 +160,19 @@ export const blueprint = {
     columns: [
       {
         icon: "GraduationCap",
+        tone: "lime",
         header: "Colleges & groups",
         body: "Multiple courses, affiliated institutions, management quota seats to fill each cycle.",
       },
       {
         icon: "BookOpen",
+        tone: "azure",
         header: "Coaching institutes",
         body: "Multiple exam categories across cities, where parents compare for weeks before enrolling.",
       },
       {
         icon: "Handshake",
+        tone: "amber",
         header: "Consultancies",
         body: "Counselling operations competing for the same searches as every other consultant in the state.",
       },
@@ -335,6 +340,7 @@ export const blueprint = {
     scenarios: [
       {
         icon: "GraduationCap",
+        tone: "lime",
         scenario: "College or group, 4 courses, 50 affiliated institutions",
         pageCount: "200–250",
         intent: "“top [course] colleges in [city]”",
@@ -342,6 +348,7 @@ export const blueprint = {
       },
       {
         icon: "BookOpen",
+        tone: "azure",
         scenario: "Coaching institute, 6 exam categories, 3 cities",
         pageCount: "120–200",
         intent: "“[exam] coaching in [area]”",
@@ -349,6 +356,7 @@ export const blueprint = {
       },
       {
         icon: "Handshake",
+        tone: "amber",
         scenario: "Admissions consultancy, statewide",
         pageCount: "150–400",
         intent: "“[exam] counselling”, “cutoff [year]”",
@@ -370,16 +378,31 @@ export const blueprint = {
     intro:
       "Free tools handle verification and baseline research throughout. Paid tools appear only where manual work stops scaling — crawling past 500 URLs, clustering past a few hundred keywords, tracking rankings across tiers.",
     rows: [
-      { icon: "Search", stage: "Keyword research", tools: "Keyword Planner, Search Console, Trends", cost: "Free" },
-      { icon: "Layers", stage: "Keyword clustering", tools: "Ahrefs or SEMrush", cost: "Paid" },
-      { icon: "Database", stage: "Site structure", tools: "Sheets, Supabase", cost: "Free tier" },
-      { icon: "Bug", stage: "Crawling and audit", tools: "Screaming Frog, Sitebulb", cost: "Paid" },
-      { icon: "Gauge", stage: "Technical validation", tools: "PageSpeed, Rich Results Test", cost: "Free" },
-      { icon: "FileText", stage: "Content scoring", tools: "Surfer or Clearscope", cost: "Paid" },
-      { icon: "Sparkles", stage: "Drafting", tools: "LLM from locked briefs", cost: "Paid API" },
-      { icon: "FormInput", stage: "Lead capture", tools: "Forms, Tag Manager, Sheets", cost: "Free" },
-      { icon: "LineChart", stage: "Measurement", tools: "GA4, Search Console, Looker Studio", cost: "Free" },
-      { icon: "BarChart3", stage: "Rank tracking", tools: "Ahrefs or SEMrush", cost: "Paid" },
+      {
+        icon: "Search",
+        stage: "Keyword research",
+        tools: ["Keyword Planner", "Search Console", "Trends"],
+        cost: "Free",
+      },
+      { icon: "Layers", stage: "Keyword clustering", tools: ["Ahrefs", "SEMrush"], cost: "Paid" },
+      { icon: "Database", stage: "Site structure", tools: ["Sheets", "Supabase"], cost: "Free tier" },
+      { icon: "Bug", stage: "Crawling and audit", tools: ["Screaming Frog", "Sitebulb"], cost: "Paid" },
+      {
+        icon: "Gauge",
+        stage: "Technical validation",
+        tools: ["PageSpeed", "Rich Results Test"],
+        cost: "Free",
+      },
+      { icon: "FileText", stage: "Content scoring", tools: ["Surfer", "Clearscope"], cost: "Paid" },
+      { icon: "Sparkles", stage: "Drafting", tools: ["LLM"], cost: "Paid API" },
+      { icon: "FormInput", stage: "Lead capture", tools: ["Forms", "Tag Manager", "Sheets"], cost: "Free" },
+      {
+        icon: "LineChart",
+        stage: "Measurement",
+        tools: ["GA4", "Search Console", "Looker Studio"],
+        cost: "Free",
+      },
+      { icon: "BarChart3", stage: "Rank tracking", tools: ["Ahrefs", "SEMrush"], cost: "Paid" },
     ] as ToolRow[],
     note:
       "Drafting runs from locked briefs, and every fee, intake figure and cutoff still passes human verification against source. AI drafts. It never substitutes for the fact-check.",
