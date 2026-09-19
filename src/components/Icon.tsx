@@ -11,6 +11,9 @@ import {
   GraduationCap,
   BookOpen,
   Handshake,
+  FormInput,
+  MessageCircle,
+  Phone,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,6 +30,9 @@ const icons = {
   GraduationCap,
   BookOpen,
   Handshake,
+  FormInput,
+  MessageCircle,
+  Phone,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

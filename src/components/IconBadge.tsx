@@ -7,10 +7,12 @@ import { Icon } from "@/components/Icon";
 type IconBadgeProps = {
   icon: string;
   size?: number;
+  /** Tailwind size classes for the badge circle itself, e.g. "h-7 w-7". */
+  badgeSize?: string;
   className?: string;
 };
 
-export function IconBadge({ icon, size = 20, className = "" }: IconBadgeProps) {
+export function IconBadge({ icon, size = 20, badgeSize = "h-12 w-12", className = "" }: IconBadgeProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px 0px" });
   const shouldReduceMotion = useReducedMotion();
@@ -19,7 +21,7 @@ export function IconBadge({ icon, size = 20, className = "" }: IconBadgeProps) {
   return (
     <span
       ref={ref}
-      className={`flex h-12 w-12 items-center justify-center rounded-full border bg-surface-2 transition-colors duration-500 ${
+      className={`flex ${badgeSize} flex-shrink-0 items-center justify-center rounded-full border bg-surface-2 transition-colors duration-500 ${
         settled ? "border-border-bright" : "border-border"
       } ${className}`.trim()}
     >
