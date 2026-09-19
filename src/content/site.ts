@@ -18,10 +18,10 @@ export type Metric = {
 
 export const site = {
   name: "Chirag J S",
-  title: "Fractional Digital Project Head & SEO Architect",
-  headline: "I build organic admissions engines for education businesses.",
+  title: "Digital Project Head & Organic Growth Architect",
+  headline: "Admission enquiries that don't stop when your ads do.",
   supportingLine:
-    "Twelve years inside admissions, applied to search architecture — so your lead pipeline compounds instead of resetting every time you pause ad spend.",
+    "I help colleges, coaching institutes and admissions consultancies own the searches their students are already making — so enquiries keep arriving every month, without paying for every click. Twelve years inside admissions, applied to how search actually works.",
 
   email: "chiragjs@outlook.com",
   phone: {
@@ -52,10 +52,10 @@ export const site = {
   ] satisfies NavItem[],
 
   metadata: {
-    title: "Chirag J S — Fractional SEO Architect for Education Admissions",
+    title: "Chirag J S — Digital Project Head & Organic Growth Architect",
     // TODO: review copy
     description:
-      "Fractional Digital Project Head and SEO Architect building organic admissions engines for colleges, coaching centres, and admissions consultancies in India.",
+      "Digital Project Head and Organic Growth Architect building organic admission enquiries for colleges, coaching institutes, and admissions consultancies in India.",
   },
 } as const;
 

@@ -1,12 +1,26 @@
-import { Compass, PenTool, Radar, TrendingUp, TrendingDown, CircleOff, type LucideIcon } from "lucide-react";
+import {
+  Compass,
+  PenTool,
+  Radar,
+  TrendingUp,
+  Unplug,
+  Users,
+  Search,
+  LayoutGrid,
+  MessageSquare,
+  type LucideIcon,
+} from "lucide-react";
 
 const icons = {
   Compass,
   PenTool,
   Radar,
   TrendingUp,
-  TrendingDown,
-  CircleOff,
+  Unplug,
+  Users,
+  Search,
+  LayoutGrid,
+  MessageSquare,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

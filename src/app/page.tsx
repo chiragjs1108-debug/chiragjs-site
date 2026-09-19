@@ -18,14 +18,24 @@ export const metadata: Metadata = {
   description: site.metadata.description,
 };
 
+const h2Class =
+  "mt-4 max-w-xl font-display text-[30px] font-semibold leading-[1.1] tracking-[-0.02em] text-text md:text-[44px]";
+
 export default function Home() {
+  const whatsappHref = `https://wa.me/${site.phone.raw}`;
+
   return (
     <>
       {/* 1. Hero — server-rendered, no motion: nothing may delay LCP */}
       <section className="relative overflow-hidden py-[72px] md:py-[120px]">
         <GridTexture />
         <Container>
-          <Eyebrow>{site.title}</Eyebrow>
+          <Eyebrow>
+            {home.hero.eyebrowLine1}
+            <span className="hidden sm:inline"> · </span>
+            <br className="sm:hidden" />
+            {home.hero.eyebrowLine2}
+          </Eyebrow>
           <h1 className="mt-4 max-w-3xl font-display text-[38px] font-bold leading-[1.1] tracking-[-0.03em] text-text md:text-[64px]">
             {site.headline}
           </h1>
@@ -33,13 +43,14 @@ export default function Home() {
             {site.supportingLine}
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="/blueprint" variant="primary">
-              See the blueprint
+            <Button href={home.hero.primaryCta.href} variant="primary">
+              {home.hero.primaryCta.label}
             </Button>
-            <Button href="/contact" variant="ghost">
-              Start a conversation
+            <Button href={home.hero.ghostCta.href} variant="ghost">
+              {home.hero.ghostCta.label}
             </Button>
           </div>
+          <p className="mt-4 font-mono text-[13px] text-text-3">{home.hero.note}</p>
         </Container>
       </section>
 
@@ -48,9 +59,12 @@ export default function Home() {
         <Container>
           <Eyebrow number="01">{home.problem.eyebrow}</Eyebrow>
           <Reveal>
-            <h2 className="mt-4 max-w-xl font-display text-[30px] font-semibold leading-[1.1] tracking-[-0.02em] text-text md:text-[44px]">
-              {home.problem.heading}
-            </h2>
+            <h2 className={h2Class}>{home.problem.heading}</h2>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <p className="mt-4 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+              {home.problem.intro}
+            </p>
           </Reveal>
 
           <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-3">
@@ -76,7 +90,8 @@ export default function Home() {
       {metrics.length > 0 && (
         <section className="py-[72px] md:py-[120px]">
           <Container>
-            <StaggerGroup className="grid gap-10 sm:grid-cols-3">
+            <Eyebrow>{home.proof.eyebrow}</Eyebrow>
+            <StaggerGroup className="mt-8 grid gap-10 sm:grid-cols-3">
               {metrics.map((metric) => (
                 <Reveal key={metric.label}>
                   <div>
@@ -93,18 +108,22 @@ export default function Home() {
                 </Reveal>
               ))}
             </StaggerGroup>
+            <p className="mt-6 font-mono text-[13px] text-text-3">{home.proof.caption}</p>
           </Container>
         </section>
       )}
 
-      {/* 4. The chain */}
+      {/* 4. What I actually do */}
       <section className="py-[72px] md:py-[120px]">
         <Container>
-          <Eyebrow number="02">{home.chain.eyebrow}</Eyebrow>
+          <Eyebrow number="02">{home.approach.eyebrow}</Eyebrow>
           <Reveal>
-            <h2 className="mt-4 max-w-xl font-display text-[30px] font-semibold leading-[1.1] tracking-[-0.02em] text-text md:text-[44px]">
-              {home.chain.heading}
-            </h2>
+            <h2 className={h2Class}>{home.approach.heading}</h2>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <p className="mt-4 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+              {home.approach.intro}
+            </p>
           </Reveal>
 
           <div className="relative mt-16">
@@ -118,31 +137,100 @@ export default function Home() {
             </svg>
 
             <StaggerGroup className="relative grid gap-10 sm:grid-cols-2 md:grid-cols-4">
-              {home.chain.nodes.map((node) => (
-                <Reveal key={node.label}>
-                  <div className="flex flex-col items-start gap-3 md:items-center md:text-center">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border-bright bg-surface font-mono text-[13px] text-text">
-                      {node.label}
+              {home.approach.steps.map((step, index) => (
+                <Reveal key={step.title}>
+                  <div className="flex flex-col items-start gap-3">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full border border-border-bright bg-surface">
+                      <Icon name={step.icon} size={20} className="text-text-2" />
                     </span>
-                    <p className="font-display text-[18px] font-semibold text-text">
-                      {node.title}
+                    <p className="font-mono text-[13px] text-text-3">
+                      {String(index + 1).padStart(2, "0")}
                     </p>
+                    <p className="font-display text-[18px] font-semibold text-text">
+                      {step.title}
+                    </p>
+                    <p className="text-[15px] leading-[1.65] text-text-2">{step.body}</p>
                   </div>
                 </Reveal>
               ))}
             </StaggerGroup>
           </div>
+
+          <Reveal>
+            <p className="mt-12 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+              {home.approach.closingLine}
+            </p>
+          </Reveal>
         </Container>
       </section>
 
-      {/* 5. Services preview */}
+      {/* 5. Who this is for */}
       <section className="py-[72px] md:py-[120px]">
         <Container>
-          <Eyebrow number="03">{home.servicesPreview.eyebrow}</Eyebrow>
+          <Eyebrow number="03">{home.fit.eyebrow}</Eyebrow>
           <Reveal>
-            <h2 className="mt-4 max-w-xl font-display text-[30px] font-semibold leading-[1.1] tracking-[-0.02em] text-text md:text-[44px]">
-              {home.servicesPreview.heading}
-            </h2>
+            <h2 className={h2Class}>{home.fit.heading}</h2>
+          </Reveal>
+
+          <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-3">
+            {home.fit.columns.map((column) => (
+              <Reveal key={column.header}>
+                <Card hoverable={false}>
+                  <p className="font-mono text-[13px] uppercase tracking-[0.02em] text-text-3">
+                    {column.header}
+                  </p>
+                  <p className="mt-3 text-[15px] leading-[1.65] text-text-2">{column.body}</p>
+                </Card>
+              </Reveal>
+            ))}
+          </StaggerGroup>
+
+          <Reveal>
+            <p className="mt-10 max-w-2xl text-[15px] leading-[1.65] text-text-2">
+              {home.fit.footerLine}
+            </p>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 6. Why me */}
+      <section className="py-[72px] md:py-[120px]">
+        <Container>
+          <Eyebrow number="04">{home.background.eyebrow}</Eyebrow>
+          <Reveal>
+            <h2 className={h2Class}>{home.background.heading}</h2>
+          </Reveal>
+
+          <div className="mt-6 max-w-2xl space-y-4">
+            {home.background.body.map((paragraph, index) => (
+              <Reveal key={index} delay={index * 0.06}>
+                <p className="text-[17px] leading-[1.65] text-text-2">{paragraph}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <div className="mt-8 max-w-2xl border-l-2 border-lime pl-6">
+              <p className="text-[17px] leading-[1.65] text-text">{home.background.boundary}</p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="mt-8">
+              <Button href={home.background.cta.href} variant="ghost">
+                {home.background.cta.label}
+              </Button>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 7. Services preview */}
+      <section className="py-[72px] md:py-[120px]">
+        <Container>
+          <Eyebrow number="05">{home.servicesPreview.eyebrow}</Eyebrow>
+          <Reveal>
+            <h2 className={h2Class}>{home.servicesPreview.heading}</h2>
           </Reveal>
 
           <StaggerGroup className="mt-12 grid gap-6 md:grid-cols-3">
@@ -169,17 +257,36 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 6. Closing CTA */}
+      {/* 8. Closing CTA */}
       <section className="py-[72px] md:py-[120px]">
         <Container>
           <Reveal>
-            <div className="flex flex-col items-start gap-6 rounded-card border border-border bg-surface p-10 shadow-lime-glow md:flex-row md:items-center md:justify-between md:p-14">
-              <h2 className="max-w-xl font-display text-[26px] font-semibold leading-[1.1] tracking-[-0.01em] text-text md:text-[36px]">
+            <div className="rounded-card border border-border bg-surface p-10 shadow-lime-glow md:p-14">
+              <h2 className="max-w-2xl font-display text-[26px] font-semibold leading-[1.1] tracking-[-0.01em] text-text md:text-[36px]">
                 {home.closingCta.heading}
               </h2>
-              <Button href="/contact" variant="primary">
-                {home.closingCta.buttonLabel}
-              </Button>
+              <p className="mt-4 max-w-2xl text-[17px] leading-[1.65] text-text-2">
+                {home.closingCta.body}
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <Button href={home.closingCta.primaryCta.href} variant="primary">
+                  {home.closingCta.primaryCta.label}
+                </Button>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+                >
+                  {home.closingCta.whatsappLabel}
+                </a>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="font-mono text-[13px] text-text-2 transition-colors duration-[180ms] hover:text-text"
+                >
+                  {site.email}
+                </a>
+              </div>
             </div>
           </Reveal>
         </Container>
