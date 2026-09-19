@@ -4,6 +4,10 @@ import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Eyebrow } from "@/components/Eyebrow";
 import { GridTexture } from "@/components/GridTexture";
+import { Reveal } from "@/components/motion/Reveal";
+import { StaggerGroup } from "@/components/motion/StaggerGroup";
+import { CountUp } from "@/components/motion/CountUp";
+import { DrawSVG } from "@/components/motion/DrawSVG";
 
 export const metadata: Metadata = {
   title: "Style guide",
@@ -353,13 +357,115 @@ export default function StyleguidePage() {
       </Container>
 
       {/* GridTexture */}
-      <Container className="mt-24 mb-24">
+      <Container className="mt-24">
         <SectionHeading number="06" title="GridTexture" />
         <div className="relative overflow-hidden rounded-card border border-border bg-base p-12">
           <GridTexture />
           <p className="relative font-mono text-[13px] text-text-3">
             3–5% opacity dot grid — for hero and diagram backgrounds only, never behind body text
           </p>
+        </div>
+      </Container>
+
+      {/* Motion */}
+      <Container className="mt-24 mb-24">
+        <SectionHeading number="07" title="Motion" />
+        <p className="mb-10 max-w-[42rem] text-[15px] leading-[1.65] text-text-2">
+          All four honour <code className="font-mono text-text">prefers-reduced-motion</code> —
+          enable it in your OS to confirm transforms collapse to instant opacity changes,
+          counters jump straight to their final value, and the diagram line renders complete.
+        </p>
+
+        <div className="space-y-14">
+          <div>
+            <p className="mb-4 font-mono text-[13px] text-text-3">
+              Reveal — fades up 16px once, as it enters the viewport
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <Reveal>
+                <Card hoverable={false}>
+                  <p className="text-[17px] leading-[1.65] text-text-2">
+                    Reveal wraps any block and fades it up once on scroll entry.
+                  </p>
+                </Card>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <Card hoverable={false}>
+                  <p className="text-[17px] leading-[1.65] text-text-2">
+                    A second Reveal with a manual 60ms delay, matching the stagger rhythm.
+                  </p>
+                </Card>
+              </Reveal>
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-[13px] text-text-3">
+              StaggerGroup — wraps Reveal children, staggering each by 60ms
+            </p>
+            <StaggerGroup className="grid gap-6 sm:grid-cols-3">
+              <Reveal>
+                <Card hoverable={false}>
+                  <p className="font-mono text-[13px] text-text-3">01</p>
+                  <p className="mt-2 text-[15px] text-text-2">First</p>
+                </Card>
+              </Reveal>
+              <Reveal>
+                <Card hoverable={false}>
+                  <p className="font-mono text-[13px] text-text-3">02</p>
+                  <p className="mt-2 text-[15px] text-text-2">Second</p>
+                </Card>
+              </Reveal>
+              <Reveal>
+                <Card hoverable={false}>
+                  <p className="font-mono text-[13px] text-text-3">03</p>
+                  <p className="mt-2 text-[15px] text-text-2">Third</p>
+                </Card>
+              </Reveal>
+            </StaggerGroup>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-[13px] text-text-3">
+              CountUp — demo values, not real metrics
+            </p>
+            <div className="flex flex-wrap gap-12">
+              <div>
+                <p className="font-display text-[56px] font-bold tracking-[-0.03em] text-text">
+                  <CountUp value={128} />
+                </p>
+                <p className="mt-1 font-mono text-[13px] text-text-3">sample integer</p>
+              </div>
+              <div>
+                <p className="font-display text-[56px] font-bold tracking-[-0.03em] text-text">
+                  <CountUp value={4.5} decimals={1} suffix="s" />
+                </p>
+                <p className="mt-1 font-mono text-[13px] text-text-3">sample decimal + suffix</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-[13px] text-text-3">
+              DrawSVG — pathLength animates from 0 to 1 on scroll entry
+            </p>
+            <svg
+              viewBox="0 0 400 80"
+              className="w-full max-w-md"
+              fill="none"
+              role="img"
+              aria-label="Sample line drawing on scroll"
+            >
+              <title>Sample line drawing on scroll</title>
+              <DrawSVG
+                d="M10 60 L110 20 L210 60 L310 20 L390 50"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="stroke-lime"
+              />
+            </svg>
+          </div>
         </div>
       </Container>
     </div>
